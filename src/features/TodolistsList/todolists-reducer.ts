@@ -3,7 +3,7 @@ import {Dispatch} from 'redux'
 import {handleServerNetworkError} from '../../utils/error-utils'
 import {AppThunk} from '../../app/store';
 import {appActions, RequestStatusType, SetAppErrorActionType, SetAppStatusActionType} from "../../app/app-reducer";
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice, current, PayloadAction} from "@reduxjs/toolkit";
 
 const initialState: Array<TodolistDomainType> = []
 
@@ -39,6 +39,7 @@ const slice = createSlice({
 			}
 		},
 		setTodolistsAC: (state, action: PayloadAction<{ todolists: TodolistType[] }>) => {
+			console.log(current(state))
 			return action.payload.todolists.map(el => ({...el, filter: 'all', entityStatus: 'idle'}))
 		},
 	}
