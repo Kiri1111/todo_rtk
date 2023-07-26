@@ -21,7 +21,7 @@ const slice = createSlice({
 			const tasks = state[action.payload.todolistId]
 			const indexTaskForDeleteId = tasks.findIndex(t => t.id === action.payload.taskId)
 			if (indexTaskForDeleteId !== -1) {
-				tasks.slice(indexTaskForDeleteId, 1)
+				tasks.splice(indexTaskForDeleteId, 1)
 			}
 		},
 		addTaskAC: (state, action: PayloadAction<{ task: TaskType }>) => {
